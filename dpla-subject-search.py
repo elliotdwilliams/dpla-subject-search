@@ -14,7 +14,8 @@ with open('results.txt', 'w') as results_file:
     for subject in subjects:
         subject = subject.strip()
         print(subject)
-        results = dpla.search(subject, fields=["sourceResource.subject.name"])
+        fields = {"sourceResource.subject.name" : subject}
+        results = dpla.search(searchFields = fields)
         count = results.count
         print(count)
 
