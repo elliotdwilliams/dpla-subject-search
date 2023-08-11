@@ -5,6 +5,7 @@ tab-delimited file with subjects, number of records, and number of contributors.
 
 import requests
 from time import sleep
+from urllib.parse import quote
 from credentials import *
 
 # Read subjects file
@@ -18,9 +19,10 @@ with open('results.txt', 'w') as results_file:
 # Iterate through each subject
     for subject in subjects:
         subject = subject.strip()
+        subject_url = quote(subject) # URL-encode
         print(subject)
 
-        api_url = ('https://api.dp.la/v2/items?sourceResource.subject.name=%22' + subject + 
+        api_url = ('https://api.dp.la/v2/items?sourceResource.subject.name=%22' + subject_url + 
                    '%22&api_key=' + DPLA_KEY + '&facets=dataProvider&exact_field_match=true')
         response = requests.get(api_url).json()
 
