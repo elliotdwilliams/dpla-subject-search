@@ -23,7 +23,7 @@ with open('results.txt', 'w') as results_file:
         print(subject)
 
         api_url = ('https://api.dp.la/v2/items?sourceResource.subject.name=%22' + subject_url + 
-                   '%22&api_key=' + DPLA_KEY + '&facets=dataProvider&exact_field_match=true')
+                   '%22&api_key=' + DPLA_KEY + '&facets=dataProvider&facet_size=100&exact_field_match=true')
         response = requests.get(api_url).json()
 
         count = response['count']
