@@ -8,7 +8,7 @@ from credentials import *
 
 # Set parameters for API call
 # In source, for hub, use 'provider='; for institutions, use 'dataProvider='
-number_results = 100
+number_results = 500
 source = 'dataProvider="UTSA Libraries Special Collections"'
 
 # Create API call and make request
