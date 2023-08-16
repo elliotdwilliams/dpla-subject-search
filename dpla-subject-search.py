@@ -33,7 +33,7 @@ with open('results.txt', 'w') as results_file:
         contributor_count = len(contributors)
         print(contributor_count)
 
-        results_file.write(subject+'\t'+str(count)+'\t'+str(contributor_count)+'\n')
+        results_file.write(subject + '\t' + str(count) + '\t' + str(contributor_count) + '\n')
 
         sleep(0.25)
 
