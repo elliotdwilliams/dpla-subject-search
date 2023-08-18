@@ -10,7 +10,7 @@ facet_size = 1000  # number of subjects to retrieve, max 2000
 
 # Create API call and make request
 api_url = ('https://api.dp.la/v2/items?' + source + '&api_key=' + DPLA_KEY
-           + '&facets=sourceResource.subject.name&facet_size=' + facet_size + '&page_size=0')
+           + '&facets=sourceResource.subject.name&facet_size=' + str(facet_size) + '&page_size=0')
 print(api_url)
 response = requests.get(api_url).json()
 
