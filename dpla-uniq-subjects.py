@@ -18,7 +18,7 @@ response = requests.get(api_url).json()
 subjects = response['facets']['sourceResource.subject.name']['terms']
 
 # Open file to write results
-with open('uniq_subjects.txt', 'w') as results_file:
+with open('uniq_subjects.txt', 'w', encoding='utf-8') as results_file:
     results_file.write('UNIQUE SUBJECTS\n')  # Add header row
     number_uniq = 0
     number_subjects = len(subjects)
@@ -38,7 +38,11 @@ with open('uniq_subjects.txt', 'w') as results_file:
             # Count number of contributors for this term
             contributors = response['facets']['dataProvider']['terms']
             contributor_count = len(contributors)
-            print(subject_term + ' ' + str(contributor_count))
+            try:
+                print(subject_term + ' ' + str(contributor_count))
+            # If the subject term contains a unicode character that can't display in console
+            except UnicodeError:
+                print('**UNICODE ERROR** ' + str(contributor_count))
 
             # If unique, write to results file
             if contributor_count == 1:

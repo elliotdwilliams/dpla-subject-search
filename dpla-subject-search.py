@@ -21,7 +21,11 @@ with open('results.txt', 'w') as results_file:
         subject = subject.strip()
         if (len(subject) <= 198):
             subject_url = quote(subject)  # URL-encode
-            print(subject)
+            try:
+                print(subject)
+            # If the subject term contains a unicode character that can't display in console
+            except UnicodeError:
+                print('**UNICODE ERROR**')
 
             api_url = ('https://api.dp.la/v2/items?sourceResource.subject.name=%22' + subject_url +
                        '%22&api_key=' + DPLA_KEY + '&facets=dataProvider&facet_size=100&exact_field_match=true')
